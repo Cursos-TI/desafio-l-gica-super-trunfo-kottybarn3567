@@ -21,23 +21,23 @@
 int main()
 {
 
-    int opcao; // CRIEI UMA VARIAVEL PARA OPÇÃO DO switch
+    int opcao;
 
     char pais1[30], cidade1[30], codigo1[3];
-    float area1, dens_pop1, cap_pib1;
-    int ponts_turist1;
+    float area1, dens_pop1, cap_pib1, primeiro_atributo1, segundo_atributo1;
+    int ponts_turist1, opcao1;
     double super1, pib1, populacao1;
 
     char pais2[30], cidade2[30], codigo2[3];
-    float area2, dens_pop2, cap_pib2;
-    int ponts_turist2;
+    float area2, dens_pop2, cap_pib2, primeiro_atributo2, segundo_atributo2;
+    int ponts_turist2, opcao2;
     double super2, pib2, populacao2;
 
     printf("===============================================================================================\n\n");
     printf("Bem vindo ao Cadastro de cartas\n");
     printf("\n");
     printf("Nome da Cidade1: ");
-    scanf(" %s", cidade1);
+    scanf("%s", cidade1);
     printf("Nome do Pais da Cidade1: ");
     scanf(" %s", pais1);
     printf("Estado - UF: ");
@@ -58,7 +58,7 @@ int main()
 
     printf("===============================================================================================\n\n");
     printf("Nome da Cidade2: ");
-    scanf(" %s", cidade2);
+    scanf("%s", cidade2);
     printf("Nome do Pais da Cidade2: ");
     scanf(" %s", pais2);
     printf("Estado - UF: ");
@@ -76,8 +76,6 @@ int main()
     dens_pop2 = populacao2 / area2;
     cap_pib2 = pib2 / populacao2;
     super2 = populacao2 + area2 + pib2 + cap_pib2 + (area2 / populacao2) + ponts_turist2;
-
-    // DEIXEI PRA MOSTRAR SO DEPOIS AS INFORMAÇÕES
 
     printf("===============================================================================================\n");
     printf("CIDADE1: %s\n", cidade1);
@@ -125,11 +123,11 @@ int main()
     // printf("SUPER PODER CIDADE2, GANHA?: %d \n", super2 > super1);
     // printf("=================================================\n\n");
 
-    // ACREDITO SER CODIGO DE NÃO-SERVENTIA JÁ MAIS.
+    // ADICIONEI NO FINAL COMPARANDO OS VALORES UNS COM OS OUTROS E AINDA VENDO SE SÃO IGUAIS.
 
     printf("===============================================================================================\n");
 
-    printf("Escolha um item da para Comparar: \n\n");
+    printf("Escolha dois item da para Comparar: \n\n");
     printf("1. POPULAÇÃO \n");
     printf("2. AREA \n");
     printf("3. PIB \n");
@@ -137,83 +135,303 @@ int main()
     printf("5. DENSIDADE \n");
     printf("6. PIB PER CAPITA \n");
     printf("7. SUPER-PODER \n");
-    printf("Digite aqui: ");
-    scanf("%d", &opcao);
+    printf("Digite aqui o primeiro: ");
+    scanf("%d", &opcao1);
+    printf("Digite aqui o segundo: ");
+    scanf("%d", &opcao2);
 
-    // MENU DE ESCOLHA COM SWITCH
-
-    switch (opcao)
+    if (opcao2 == opcao1)
     {
-    case 1:
-        if (populacao1 > populacao2) {
-            printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade1, populacao1, populacao2);
-        } else if (populacao1 == populacao2) {
-            printf("POPULAÇÃO DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, populacao1, populacao2);
-        } else {
-            printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade2, populacao2, populacao1);
-        }
-        break;
-
-    case 2:
-        if (area1 > area2) {
-            printf("AREA DA %s É MAIOR: %f > %f \n", cidade1, area1, area2);
-        } else if (area1 == area2) {
-            printf("AREA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, area1, area2);
-        } else {
-            printf("AREA DA %s É MAIOR: %f > %f \n", cidade1, area2, area1);
-        }
-        break;
-
-    case 3:
-        if (pib1 > pib2) {
-            printf("PIB DA %s É MAIOR: %f > %f \n", cidade1, pib1, pib2);
-        } else if (pib1 == pib2) {
-            printf("PIB DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, pib1, pib2);
-        } else {
-            printf("PIB DA %s É MAIOR: %f > %f \n", cidade2, pib2, pib1);
-        }
-        break;
-
-    case 4:
-        if (ponts_turist1 > ponts_turist2) {
-            printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade1, ponts_turist1, ponts_turist2);
-        } else if (ponts_turist1 == ponts_turist2) {
-            printf("TURISMO DA %s É IGUAL Á DA %s: %d = %d \n", cidade1, cidade2, ponts_turist1, ponts_turist2);
-        } else {
-            printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade2, ponts_turist2, ponts_turist1);
-        }
-        break;
-
-    case 5:
-        if (dens_pop1 < dens_pop2) {
-            printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade1, dens_pop1, dens_pop2);
-        } else if (dens_pop1 == dens_pop2) {
-            printf("DENSIDADE DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, dens_pop1, dens_pop2);
-        } else {
-            printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade2, dens_pop2, dens_pop1);
-        }
-        break;
-
-    case 6:
-        if (cap_pib1 > cap_pib2) {
-            printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade1, cap_pib1, cap_pib2);
-        } else if (cap_pib1 == cap_pib2) {
-            printf("PIB PER CAPITA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, cap_pib1, cap_pib2);
-        } else {
-            printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade2, cap_pib2, cap_pib1);
-        }
-        break;
-
-    case 7:
-        if (super1 > super2) {
-            printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade1, super1, super2);
-        } else if (super1 == super2) {
-            printf("SUPER PODER DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, super1, super2);
-        } else {
-            printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade2, super2, super1);
-        }
-        break;
+        printf("Não é possivel escolher a mesma opção. \n");
     }
+    else
+    {
+        switch (opcao1)
+        {
+        case 1:
+
+            primeiro_atributo1 = populacao1;
+            segundo_atributo1 = populacao2;
+
+            if (populacao1 > populacao2)
+            {
+                printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade1, populacao1, populacao2);
+            }
+            else if (populacao1 == populacao2)
+            {
+                printf("POPULAÇÃO DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, populacao1, populacao2);
+            }
+            else
+            {
+                printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade2, populacao2, populacao1);
+            }
+            break;
+
+        case 2:
+
+            primeiro_atributo1 = area1;
+            segundo_atributo1 = area2;
+
+            if (area1 > area2)
+            {
+                printf("AREA DA %s É MAIOR: %f > %f \n", cidade1, area1, area2);
+            }
+            else if (area1 == area2)
+            {
+                printf("AREA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, area1, area2);
+            }
+            else
+            {
+                printf("AREA DA %s É MAIOR: %f > %f \n", cidade2, area2, area1);
+            }
+            break;
+
+        case 3:
+
+            primeiro_atributo1 = pib1;
+            segundo_atributo1 = pib2;
+
+            if (pib1 > pib2)
+            {
+                printf("PIB DA %s É MAIOR: %f > %f \n", cidade1, pib1, pib2);
+            }
+            else if (pib1 == pib2)
+            {
+                printf("PIB DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, pib1, pib2);
+            }
+            else
+            {
+                printf("PIB DA %s É MAIOR: %f > %f \n", cidade2, pib2, pib1);
+            }
+            break;
+
+        case 4:
+
+            primeiro_atributo1 = ponts_turist1;
+            segundo_atributo1 = ponts_turist2;
+
+            if (ponts_turist1 > ponts_turist2)
+            {
+                printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade1, ponts_turist1, ponts_turist2);
+            }
+            else if (ponts_turist1 == ponts_turist2)
+            {
+                printf("TURISMO DA %s É IGUAL Á DA %s: %d = %d \n", cidade1, cidade2, ponts_turist1, ponts_turist2);
+            }
+            else
+            {
+                printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade2, ponts_turist2, ponts_turist1);
+            }
+            break;
+
+        case 5:
+
+            primeiro_atributo1 = dens_pop1;
+            segundo_atributo1 = dens_pop2;
+
+            if (dens_pop1 < dens_pop2)
+            {
+                printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade1, dens_pop1, dens_pop2);
+            }
+            else if (dens_pop1 == dens_pop2)
+            {
+                printf("DENSIDADE DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, dens_pop1, dens_pop2);
+            }
+            else
+            {
+                printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade2, dens_pop2, dens_pop1);
+            }
+            break;
+
+        case 6:
+
+            primeiro_atributo1 = cap_pib1;
+            segundo_atributo1 = cap_pib2;
+
+            if (cap_pib1 > cap_pib2)
+            {
+                printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade1, cap_pib1, cap_pib2);
+            }
+            else if (cap_pib1 == cap_pib2)
+            {
+                printf("PIB PER CAPITA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, cap_pib1, cap_pib2);
+            }
+            else
+            {
+                printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade2, cap_pib2, cap_pib1);
+            }
+            break;
+
+        case 7:
+
+            primeiro_atributo1 = super1;
+            segundo_atributo1 = super2;
+
+            if (super1 > super2)
+            {
+                printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade1, super1, super2);
+            }
+            else if (super1 == super2)
+            {
+                printf("SUPER PODER DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, super1, super2);
+            }
+            else
+            {
+                printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade2, super2, super1);
+            }
+            break;
+        }
+
+
+        switch (opcao2)
+        {
+        case 1:
+
+            primeiro_atributo2 = populacao1;
+            segundo_atributo2 = populacao2;
+
+            if (populacao1 > populacao2)
+            {
+                printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade1, populacao1, populacao2);
+            }
+            else if (populacao1 == populacao2)
+            {
+                printf("POPULAÇÃO DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, populacao1, populacao2);
+            }
+            else
+            {
+                printf("POPULAÇÃO DA %s É MAIOR: %f > %f \n", cidade2, populacao2, populacao1);
+            }
+            break;
+
+        case 2:
+
+            primeiro_atributo2 = area1;
+            segundo_atributo2 = area2;
+
+            if (area1 > area2)
+            {
+                printf("AREA DA %s É MAIOR: %f > %f \n", cidade1, area1, area2);
+            }
+            else if (area1 == area2)
+            {
+                printf("AREA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, area1, area2);
+            }
+            else
+            {
+                printf("AREA DA %s É MAIOR: %f > %f \n", cidade2, area2, area1);
+            }
+            break;
+
+        case 3:
+
+            primeiro_atributo2 = pib1;
+            segundo_atributo2 = pib2;
+
+            if (pib1 > pib2)
+            {
+                printf("PIB DA %s É MAIOR: %f > %f \n", cidade1, pib1, pib2);
+            }
+            else if (pib1 == pib2)
+            {
+                printf("PIB DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, pib1, pib2);
+            }
+            else
+            {
+                printf("PIB DA %s É MAIOR: %f > %f \n", cidade2, pib2, pib1);
+            }
+            break;
+
+        case 4:
+
+            primeiro_atributo2 = ponts_turist1;
+            segundo_atributo2 = ponts_turist2;
+
+            if (ponts_turist1 > ponts_turist2)
+            {
+                printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade1, ponts_turist1, ponts_turist2);
+            }
+            else if (ponts_turist1 == ponts_turist2)
+            {
+                printf("TURISMO DA %s É IGUAL Á DA %s: %d = %d \n", cidade1, cidade2, ponts_turist1, ponts_turist2);
+            }
+            else
+            {
+                printf("TURISMO DA %s É MAIOR: %d > %d \n", cidade2, ponts_turist2, ponts_turist1);
+            }
+            break;
+
+        case 5:
+
+            primeiro_atributo2 = dens_pop1;
+            segundo_atributo2 = dens_pop2;
+
+            if (dens_pop1 < dens_pop2)
+            {
+                printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade1, dens_pop1, dens_pop2);
+            }
+            else if (dens_pop1 == dens_pop2)
+            {
+                printf("DENSIDADE DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, dens_pop1, dens_pop2);
+            }
+            else
+            {
+                printf("DENSIDADE DA %s É MELHOR: %f < %f \n", cidade2, dens_pop2, dens_pop1);
+            }
+            break;
+
+        case 6:
+
+            primeiro_atributo2 = cap_pib1;
+            segundo_atributo2 = cap_pib2;
+
+            if (cap_pib1 > cap_pib2)
+            {
+                printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade1, cap_pib1, cap_pib2);
+            }
+            else if (cap_pib1 == cap_pib2)
+            {
+                printf("PIB PER CAPITA DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, cap_pib1, cap_pib2);
+            }
+            else
+            {
+                printf("PIB PER CAPITA DA %s É MAIOR: %f > %f \n", cidade2, cap_pib2, cap_pib1);
+            }
+            break;
+
+        case 7:
+
+            primeiro_atributo2 = super1;
+            segundo_atributo2 = super2;
+
+            if (super1 > super2)
+            {
+                printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade1, super1, super2);
+            }
+            else if (super1 == super2)
+            {
+                printf("SUPER PODER DA %s É IGUAL Á DA %s: %f = %f \n", cidade1, cidade2, super1, super2);
+            }
+            else
+            {
+                printf("SUPER PODER DA %s É MAIOR: %f > %f \n", cidade2, super2, super1);
+            }
+            break;
+        }
+    }
+
+    if ((primeiro_atributo1 + segundo_atributo1) > (primeiro_atributo2 + segundo_atributo2))
+        {
+            printf("Cidade1: %s, Ganhou! \n", cidade1);
+        }
+        else if ((primeiro_atributo1 + segundo_atributo1) < (primeiro_atributo2 + segundo_atributo2))
+        {
+            printf("Cidade2: %s, Ganhou! \n", cidade2);
+        }
+        else
+        {
+            printf("Empate entre a cidade1: %s e cidade2: %s! \n", cidade1, cidade2);
+        }
 
     printf("===============================================================================================\n");
 
